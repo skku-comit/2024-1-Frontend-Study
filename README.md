@@ -8,6 +8,26 @@
 6. (11주차) REST API
 7. (12주차) TailwindCSS
 
+## 스터디 운영 방식
+1. issue의 자료 및 실습 과제 확인
+2. 코드 구현
+3. add commit push
+4. PR 생성
+- 실습 과제 구현 방식 소개
+- 공부 / 실습 과정에서 새로 알게 된 점 2가지 소개
+
+코드 구현 전 반드시 아래의 과정을 먼저 진행해주세요!
+```
+git switch main
+(main 브랜치로 이동)
+
+git pull
+(원격 main 브랜치의 최신 내용 불러오기)
+
+git checkout -b "<브랜치 이름>"
+(새 브랜치 생성 및 이동)
+```
+
 ### 브랜치 컨벤션
 ```
 <github 닉네임>/<issue-number>-<description>
