@@ -7,3 +7,32 @@
 5. (10주차) React 상태관리
 6. (11주차) REST API
 7. (12주차) TailwindCSS
+
+### 브랜치 컨벤션
+```
+<github 닉네임>/<issue-number>-<description>
+ex) b0xercat/1-study-tutorial
+```
+
+### 커밋 컨벤션
+```
+Angular commit convention
+<type>: <description>
+ex) feat: add study card
+```
+```
+<type>
+feat: 새로운 기능 추가
+fix: 버그 수정
+refactor: 코드 리팩토링
+chore: 사소한 작업
+hotfix: 긴급 버그 수정
+```
+```
+<description>
+- 변경 사항을 요약
+- 소문자로 시작
+- 띄어쓰기
+- 동사 원형으로 시작
+- 마침표 붙이지 않음
+```
