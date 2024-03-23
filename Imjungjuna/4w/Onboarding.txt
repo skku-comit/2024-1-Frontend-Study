@@ -1,15 +1,13 @@
 웹 프론트엔드 분반에 오신 것을 환영합니다!
 
 1. 터미널을 열어주세요!
-2. cd Imjungjuna/4w
-(입력한 디렉토리로 이동)
-3. git checkout -b "Imjungjuna/1-study-tutorial"
+2. git checkout -b "Imjungjuna/1-study-tutorial"
 (브랜치를 생성하고 해당 브랜치로 이동)
-4. Imjungjuna 안에 5w 폴더 생성, 그 안에 index.html 파일 생성
-5. index.html에 <p>I love CoMit</p> 입력
-6. git add .
-7. git commit -m "chore: add index.html"
-8. git push
-9. git push --set-upstream origin Imjungjuna/1-study-tutorial
+3. Imjungjuna 안에 5w 폴더 생성, 그 안에 index.html 파일 생성
+4. index.html에 <p>I love CoMit</p> 입력
+5. git add .
+6. git commit -m "chore: add index.html"
+7. git push
+8. git push --set-upstream origin Imjungjuna/1-study-tutorial
 (새로운 브랜치에서 첫 커밋을 할 때마다 뜰겁니다!)
-10. Pull Request 생성
+9. Pull Request 생성
