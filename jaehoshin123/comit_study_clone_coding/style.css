@@ -67,7 +67,7 @@ header {
 @media (min-width: 1024px) {
     .card {
         /* Set the width to effectively fit 4 cards per row with margin */
-        width: calc(4);
+        width: calc(25%);
     }
 }
 
