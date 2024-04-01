@@ -1,0 +1,79 @@
+body, h1, p {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+#study-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0 auto;
+    max-width: 1200px; /* Maximum width of the container, you can adjust this as needed */
+    padding: 2rem; /* This adds padding around the container */
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin: 1rem; /* This adds margin around each card */
+    background: white; /* Card background */
+    flex: 1;
+    min-width: 250px; /* Minimum width of the card */
+}
+
+.card img {
+    max-width: 100%;
+    display: block;
+}
+
+.card-content {
+    padding: 1rem;
+}
+
+.card-title {
+    margin-bottom: 0.5rem;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.card-text {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.card-stack {
+    margin: 0.5rem 0;
+}
+
+.stack-item {
+    display: inline-block;
+    background: #eee;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    margin-right: 0.3rem;
+    font-size: 0.8em;
+}
+
+@media (min-width: 1024px) {
+    .card {
+        /* Set the width to effectively fit 4 cards per row with margin */
+        width: calc(4);
+    }
+}
+
+@media (max-width: 1023px) {
+    .card {
+        /* Set the width to effectively fit 2 cards per row with margin */
+        width: calc(50%);
+    }
+}
