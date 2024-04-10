@@ -1,21 +1,30 @@
 const Component = (props) => {
-  const { imageSrc, title, level, campus, mentor, stack, description } = props
+  const { title } = props
+  const data = JSON.parse(localStorage.getItem('data'))
 
+  const studyData = data.filter((study) => study.title === title)[0]
+  const { imageSrc, level, campus, mentor, stack, description } = studyData
+  
   return `
-    <div class='text-center'>
-      <img src=${imageSrc}>
+    <main class='container text-center'>
+      <img src=${imageSrc} class='study-image'>
 
-      <h5>${title}</h5>
+      <h1 class='fw-bold mb-4'>${title}</h1>
 
-      📚&nbsp;${level}
-      🏢&nbsp;${campus}
-      👤&nbsp;${mentor}
-      🔧&nbsp;${stack}
+      <div id='info-wrapper' class='mb-4 text-start d-flex flex-column g-1'>
+        <p>📚&nbsp;${level}</p>
+        <p>🏢&nbsp;${campus}</p>
+        <p>👤&nbsp;${mentor}</p>
+        <p>🔧&nbsp;${stack.join(', ')}</p>
+      </div>
 
-      ${description}
-    </div>
+      <p id='description'>
+        ${description}
+      </p>
+    </main>
   `
 }
 
 const wrapperElement = document.getElementById("content-wrapper")
-wrapperElement.append(Component())
+const title = localStorage.getItem('studyTitle')
+wrapperElement.innerHTML = Component({title})

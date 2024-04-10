@@ -229,11 +229,16 @@ const data = [
 const wrapperElement = document.getElementById("content-wrapper")
 
 
+function redirectToStudy(title) {
+  window.location.href = location.href.replace('index.html', '') + 'study/index.html'
+  localStorage.setItem('studyTitle', title)
+};
+
 const Card = (props) => {
   const { imageSrc, title, stack } = props
 
   return `
-    <div class='col-6 col-lg-3'>
+    <div class='col-6 col-lg-3' onclick="redirectToStudy('${title}')">
       <div class='card text-center p-3'>
         <div class='card-body'>
           <img src='${imageSrc}' class='mb-3' width='160'>
@@ -263,7 +268,10 @@ const BadgeWrapper = (props) => {
 }
 
 
-const Container = (data) => {
+const Component = (data) => {
+  localStorage.setItem('data', JSON.stringify(data))
+  localStorage.removeItem('itemTitle')
+
   return `
     <div class='container'>
       <div class='row g-5'>
@@ -272,4 +280,4 @@ const Container = (data) => {
     </div>
   `
 }
-wrapperElement.innerHTML = Container(data)
+wrapperElement.innerHTML = Component(data)

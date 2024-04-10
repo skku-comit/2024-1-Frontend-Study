@@ -1,0 +1,42 @@
+main {
+  /*
+    질문
+    bootstrap의 'text-center'에 해당하는 'text-align: center'는
+    가운데 정렬을 하지 못함
+    이 코드 블록처럼 main 요소에 따로 css를 적용해야 함
+  */
+  display: grid;
+  place-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+p {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.study-image {
+  width: 300px;
+  height: 300px;
+}
+
+#info-wrapper {
+  width: 300px;
+}
+
+#description {
+  width: 450px;
+  font-size: 1.1em;
+  font-weight: 500;
+  line-height: 1.7em;
+}
