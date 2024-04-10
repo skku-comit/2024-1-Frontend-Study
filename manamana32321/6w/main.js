@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.mainWrapper = void 0;
 var data = [
     {
         imageSrc: "https://p92.hu/binaries/content/gallery/p92website/technologies/htmlcssjs-overview.png",
@@ -198,11 +195,14 @@ var data = [
         isRecruiting: false,
     },
 ];
-var rawWrapper = document.getElementById("content-wrapper");
-if (rawWrapper === null) {
-    throw new Error("cannot locate 'content-wrapper'");
-}
-exports.mainWrapper = rawWrapper;
+var Main;
+(function (Main) {
+    var rawWrapper = document.getElementById("content-wrapper");
+    if (rawWrapper === null) {
+        throw new Error("cannot locate 'content-wrapper'");
+    }
+    Main.mainWrapper = rawWrapper;
+})(Main || (Main = {}));
 function redirectToStudy(title) {
     window.location.href = location.href.replace('index.html', '') + 'study/index.html';
     localStorage.setItem('studyTitle', title);
@@ -221,6 +221,6 @@ var BadgeWrapper = function (texts) {
 var MainComponent = function (data) {
     localStorage.setItem('data', JSON.stringify(data));
     localStorage.removeItem('itemTitle');
-    return "\n    <div class='container'>\n      <div class='row g-5'>\n        ".concat(data.map(function (props) { return Card(props); }).join(''), "\n      </div>\n    </div>\n  ");
+    return "\n    <main class='container'>\n      <div class='row g-5'>\n        ".concat(data.map(function (props) { return Card(props); }).join(''), "\n      </div>\n    </main>\n  ");
 };
-exports.mainWrapper.innerHTML = MainComponent(data);
+Main.mainWrapper.innerHTML = MainComponent(data);

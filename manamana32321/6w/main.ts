@@ -240,16 +240,20 @@ const data: Study[] = [
   },
 ];
 
-const rawWrapper = document.getElementById("content-wrapper")
-if (rawWrapper === null) {
-  throw new Error("cannot locate 'content-wrapper'");
+namespace Main {
+  const rawWrapper = document.getElementById("content-wrapper")
+  if (rawWrapper === null) {
+    throw new Error("cannot locate 'content-wrapper'");
+  }
+  export const mainWrapper = rawWrapper
 }
-export const mainWrapper = rawWrapper
+
 
 function redirectToStudy(title: string): void {
   window.location.href = location.href.replace('index.html', '') + 'study/index.html'
   localStorage.setItem('studyTitle', title)
 };
+
 
 const Card = (props: Study): string => {
   const { imageSrc, title, stack } = props
@@ -286,11 +290,11 @@ const MainComponent = (data: Study[]): string => {
   localStorage.removeItem('itemTitle')
 
   return `
-    <div class='container'>
+    <main class='container'>
       <div class='row g-5'>
         ${data.map((props) => Card(props)).join('')}
       </div>
-    </div>
+    </main>
   `
 }
-mainWrapper.innerHTML = MainComponent(data)
+Main.mainWrapper.innerHTML = MainComponent(data)

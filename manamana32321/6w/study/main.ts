@@ -1,15 +1,17 @@
-import { mainWrapper } from "../main";
-
-const Component = (props) => {
-  const { title } = props
-  const rawData = localStorage.getItem('data')
-  if (rawData === null) {
-    throw new Error(`invalid title '${title}'`);
+namespace Detail {
+  const rawWrapper = document.getElementById("content-wrapper")
+  if (rawWrapper === null) {
+    throw new Error("cannot locate 'content-wrapper'");
   }
-  const data = JSON.parse(rawData)
+  export const mainWrapper = rawWrapper
+}
 
-  const studyData = data.filter((study) => study.title === title)[0]
-  const { imageSrc, level, campus, mentor, stack, description } = studyData
+const Component = (props: { title: string }): string => {
+  const { title } = props
+  const data = JSON.parse(localStorage.getItem('data'))
+
+  const study: Study = data.filter((study: Study) => study.title === title)[0]
+  const { imageSrc, level, campus, mentor, stack, description } = study
   
   return `
     <main class='container text-center'>
@@ -32,4 +34,4 @@ const Component = (props) => {
 }
 
 const title = localStorage.getItem('studyTitle')
-mainWrapper.innerHTML = Component({title})
+Detail.mainWrapper.innerHTML = Component({title})
