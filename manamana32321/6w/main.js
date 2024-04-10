@@ -209,18 +209,18 @@ function redirectToStudy(title) {
 }
 ;
 var Card = function (props) {
-    var imageSrc = props.imageSrc, title = props.title, stack = props.stack;
-    return "\n    <div class='col-6 col-lg-3' onclick=\"redirectToStudy('".concat(title, "')\">\n      <div class='card text-center p-3'>\n        <div class='card-body'>\n          <img src='").concat(imageSrc, "' class='mb-3' width='160'>\n          <h5 class='fw-bold mb-3'>").concat(title, "</h5>\n\n          <div class='mb-3'>\n            ").concat(BadgeWrapper(stack), "\n          </div>\n        </div>\n      </div>\n    </div>\n  ");
+    var imageSrc = props.imageSrc, title = props.title, level = props.level, stack = props.stack, campus = props.campus;
+    return "\n    <div class='col-6 col-lg-3' onclick=\"redirectToStudy('".concat(title, "')\">\n      <div class='card text-center p-3'>\n        <div class='card-body'>\n          <img src='").concat(imageSrc, "' class='mb-3' width='160'>\n          <h5 class='fw-bold mb-3'>").concat(title, "</h5>\n\n          <div class='mb-3'>\n            ").concat(BadgeWrapper([level, stack[0], campus]), "\n          </div>\n        </div>\n      </div>\n    </div>\n  ");
 };
 var Badge = function (text) {
-    return "<span class='badge text-bg-light fw-bold mx-1'>".concat(text, "</span>");
+    return "<span class='badge text-bg-light fw-bold mx-1 fs-6'>".concat(text, "</span>");
 };
 var BadgeWrapper = function (texts) {
     return texts.map(function (text) { return Badge(text); }).join('');
 };
 var MainComponent = function (data) {
     localStorage.setItem('data', JSON.stringify(data));
-    localStorage.removeItem('itemTitle');
+    localStorage.removeItem('studyTitle');
     return "\n    <main class='container'>\n      <div class='row g-5'>\n        ".concat(data.map(function (props) { return Card(props); }).join(''), "\n      </div>\n    </main>\n  ");
 };
 Main.mainWrapper.innerHTML = MainComponent(data);

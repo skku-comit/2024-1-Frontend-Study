@@ -256,7 +256,7 @@ function redirectToStudy(title: string): void {
 
 
 const Card = (props: Study): string => {
-  const { imageSrc, title, stack } = props
+  const { imageSrc, title, level, stack, campus } = props
 
   return `
     <div class='col-6 col-lg-3' onclick="redirectToStudy('${title}')">
@@ -266,7 +266,7 @@ const Card = (props: Study): string => {
           <h5 class='fw-bold mb-3'>${title}</h5>
 
           <div class='mb-3'>
-            ${BadgeWrapper(stack)}
+            ${BadgeWrapper([level, stack[0], campus])}
           </div>
         </div>
       </div>
@@ -276,7 +276,7 @@ const Card = (props: Study): string => {
 
 
 const Badge = (text: string): string => {
-  return `<span class='badge text-bg-light fw-bold mx-1'>${text}</span>`
+  return `<span class='badge text-bg-light fw-bold mx-1 fs-6'>${text}</span>`
 }
 
 
@@ -287,7 +287,7 @@ const BadgeWrapper = (texts: string[]): string => {
 
 const MainComponent = (data: Study[]): string => {
   localStorage.setItem('data', JSON.stringify(data))
-  localStorage.removeItem('itemTitle')
+  localStorage.removeItem('studyTitle')
 
   return `
     <main class='container'>
