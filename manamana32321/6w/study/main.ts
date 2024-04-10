@@ -1,6 +1,10 @@
 const Component = (props) => {
   const { title } = props
-  const data = JSON.parse(localStorage.getItem('data'))
+  const rawData = localStorage.getItem('data')
+  if (rawData === null) {
+    throw new Error(`invalid title '${title}'`);
+  }
+  const data = JSON.parse(rawData)
 
   const studyData = data.filter((study) => study.title === title)[0]
   const { imageSrc, level, campus, mentor, stack, description } = studyData
@@ -25,6 +29,5 @@ const Component = (props) => {
   `
 }
 
-const wrapperElement = document.getElementById("content-wrapper")
 const title = localStorage.getItem('studyTitle')
-wrapperElement.innerHTML = Component({title})
+mainWrapper.innerHTML = Component({title})

@@ -1,4 +1,18 @@
-const data = [
+type Study = {
+  imageSrc: string
+  title: string
+  mentor: string
+  day: string
+  startTime: string
+  endTime: string
+  level: string
+  stack: string[]
+  campus: string
+  description: string
+  isRecruiting: boolean
+}
+
+const data: Study[] = [
   {
     imageSrc:
       "https://p92.hu/binaries/content/gallery/p92website/technologies/htmlcssjs-overview.png",
@@ -226,18 +240,22 @@ const data = [
   },
 ];
 
-const wrapperElement = document.getElementById("content-wrapper")
+const rawWrapper = document.getElementById("content-wrapper")
+if (rawWrapper === null) {
+  throw new Error("cannot locate 'content-wrapper'");
+}
+const mainWrapper = rawWrapper
 
-
-function redirectToStudy(title) {
+function redirectToStudy(title: string): void {
   window.location.href = location.href.replace('index.html', '') + 'study/index.html'
   localStorage.setItem('studyTitle', title)
 };
 
-const Card = (props) => {
+const Card = (props: Study): HTMLElement => {
   const { imageSrc, title, stack } = props
 
-  return `
+  const element = document.createElement("div")
+  element.innerHTML = `
     <div class='col-6 col-lg-3' onclick="redirectToStudy('${title}')">
       <div class='card text-center p-3'>
         <div class='card-body'>
@@ -245,30 +263,27 @@ const Card = (props) => {
           <h5 class='fw-bold mb-3'>${title}</h5>
 
           <div class='mb-3'>
-            ${BadgeWrapper({ texts: stack })}
+            ${BadgeWrapper(stack)}
           </div>
         </div>
       </div>
     </div>
   `
+  return element
 }
 
 
-const Badge = (props) => {
-  const { text } = props
-
+const Badge = (text: string) => {
   return `<span class='badge text-bg-light fw-bold mx-1'>${text}</span>`
 }
 
 
-const BadgeWrapper = (props) => {
-  const { texts } = props
-
-  return texts.map((text) => Badge({text})).join('')
+const BadgeWrapper = (texts: string[]) => {
+  return texts.map((text) => Badge(text)).join('')
 }
 
 
-const Component = (data) => {
+const MainComponent = (data) => {
   localStorage.setItem('data', JSON.stringify(data))
   localStorage.removeItem('itemTitle')
 
@@ -280,4 +295,4 @@ const Component = (data) => {
     </div>
   `
 }
-wrapperElement.innerHTML = Component(data)
+mainWrapper.innerHTML = MainComponent(data)
