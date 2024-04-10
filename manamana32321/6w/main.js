@@ -227,57 +227,49 @@ const data = [
 ];
 
 const wrapperElement = document.getElementById("content-wrapper")
-wrapperElement.className = 'container'
-
-const content = document.createElement("div")
-content.className = "row g-5"
 
 
-function Card(props) {
-  const wrapper = document.createElement("div")
-  const card = document.createElement("div")
-  const cardBody = document.createElement("div")
+const Card = (props) => {
+  const { imageSrc, title, stack } = props
 
-  const image = document.createElement("img")
-  image.className = "mb-3"
-  image.src = props.imageSrc
-  image.width = '160'
+  return `
+    <div class='col-6 col-lg-3'>
+      <div class='card text-center p-3'>
+        <div class='card-body'>
+          <img src='${imageSrc}' class='mb-3' width='160'>
+          <h5 class='fw-bold mb-3'>${title}</h5>
 
-  const title = document.createElement("h5")
-  title.textContent = props.title
-  title.className = "fw-bold mb-3"
-
-  const badgeContainer = document.createElement("div")
-  badgeContainer.className = "mb-3"
-  props.stack.map((text) => {
-    const badge = Badge({text})
-    badgeContainer.appendChild(badge)
-  })
-
-  cardBody.appendChild(image)
-  cardBody.appendChild(title)
-  cardBody.appendChild(badgeContainer)
-  cardBody.className = "card-body"
-
-  card.appendChild(cardBody)
-  card.className = "card text-center p-3"
-
-  wrapper.className = "col-6 col-lg-3"
-  wrapper.appendChild(card)
-  return wrapper
+          <div class='mb-3'>
+            ${BadgeWrapper({ texts: stack })}
+          </div>
+        </div>
+      </div>
+    </div>
+  `
 }
 
 
-function Badge(props) {
-  const container = document.createElement("span")
-  container.className = "badge text-bg-light fw-bold mx-1"
-  container.innerText = props.text
-  return container
+const Badge = (props) => {
+  const { text } = props
+
+  return `<span class='badge text-bg-light fw-bold mx-1'>${text}</span>`
 }
 
 
-const cards = data.map((props) => 
-  content.appendChild(Card(props))
-)
-cards.map((card) => content.appendChild(card))
-wrapperElement.appendChild(content)
+const BadgeWrapper = (props) => {
+  const { texts } = props
+
+  return texts.map((text) => Badge({text})).join('')
+}
+
+
+const Container = (data) => {
+  return `
+    <div class='container'>
+      <div class='row g-5'>
+        ${data.map((props) => Card(props)).join('')}
+      </div>
+    </div>
+  `
+}
+wrapperElement.innerHTML = Container(data)
