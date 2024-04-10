@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useState } from 'react'
 import './App.css';
 
+import { StudyList } from './components/StudyList';
+import { data } from './data';
+import StudyDetail from './components/StudyDetail';
+
 function App() {
+  const [studyTitle, setStudyTitle] = useState('')
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
+        <a href='' className="text-center p-3 pt-4 fw-bold">
+          <h2>CoMit Study</h2>
         </a>
       </header>
+      <div id="content">
+        {!studyTitle && <StudyList studyList={data} onSetStudyTitle={setStudyTitle}/>}
+        {studyTitle && <StudyDetail studyTitle={studyTitle}/>}
+      </div>
     </div>
   );
 }
