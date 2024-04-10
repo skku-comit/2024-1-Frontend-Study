@@ -244,18 +244,17 @@ const rawWrapper = document.getElementById("content-wrapper")
 if (rawWrapper === null) {
   throw new Error("cannot locate 'content-wrapper'");
 }
-const mainWrapper = rawWrapper
+export const mainWrapper = rawWrapper
 
 function redirectToStudy(title: string): void {
   window.location.href = location.href.replace('index.html', '') + 'study/index.html'
   localStorage.setItem('studyTitle', title)
 };
 
-const Card = (props: Study): HTMLElement => {
+const Card = (props: Study): string => {
   const { imageSrc, title, stack } = props
 
-  const element = document.createElement("div")
-  element.innerHTML = `
+  return `
     <div class='col-6 col-lg-3' onclick="redirectToStudy('${title}')">
       <div class='card text-center p-3'>
         <div class='card-body'>
@@ -269,21 +268,20 @@ const Card = (props: Study): HTMLElement => {
       </div>
     </div>
   `
-  return element
 }
 
 
-const Badge = (text: string) => {
+const Badge = (text: string): string => {
   return `<span class='badge text-bg-light fw-bold mx-1'>${text}</span>`
 }
 
 
-const BadgeWrapper = (texts: string[]) => {
+const BadgeWrapper = (texts: string[]): string => {
   return texts.map((text) => Badge(text)).join('')
 }
 
 
-const MainComponent = (data) => {
+const MainComponent = (data: Study[]): string => {
   localStorage.setItem('data', JSON.stringify(data))
   localStorage.removeItem('itemTitle')
 

@@ -1,3 +1,5 @@
+import { mainWrapper } from "../main";
+
 const Component = (props) => {
   const { title } = props
   const rawData = localStorage.getItem('data')
