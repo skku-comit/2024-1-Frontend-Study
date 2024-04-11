@@ -1,0 +1,36 @@
+h1 {
+    text-align : center
+}
+
+h3 {
+    text-align : center
+}
+
+hr {
+    margin-bottom : 30px;
+}
+
+.showClassInfo {
+    text-align : center;
+    width : 30%;
+    margin: auto;
+}
+.card-image {
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    margin-top: 50px;
+}
+.card-image img {
+    width: 30%;
+    height: 30%;
+}
+.class-details {
+    margin: 20px auto;
+    width: 80%;
+    text-align: left;
+}
+
+.class-details p {
+    margin: 5px 0;
+}
