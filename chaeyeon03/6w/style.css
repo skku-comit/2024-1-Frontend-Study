@@ -1,0 +1,56 @@
+header {
+  text-align: center;
+}
+
+#classPacket {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  row-gap: 15px;
+  justify-content: center;
+}
+
+@media (max-width: 1024px) {
+  #classPacket {
+    grid-template-columns: 50% 50%;
+  }
+}
+
+.class-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  width: 14rem;
+  height: 20rem;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.class-card:hover {
+  transform: scale(1.07);
+  cursor: pointer;
+}
+.badge-wrapper {
+  display: flex;
+}
+
+.badge > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 12px;
+  padding-right: 12px;
+  height: 1.6rem;
+  border-radius: 20px;
+  background-color: #e8e8e8;
+  margin-right: 10px;
+  font-weight: 600;
+  font-size: small;
+}
+
+img {
+  width: 200px;
+  margin: 0 auto;
+  display: flex;
+}
