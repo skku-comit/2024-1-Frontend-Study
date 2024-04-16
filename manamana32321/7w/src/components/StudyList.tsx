@@ -5,16 +5,15 @@ import { Container, Row, Col } from 'react-bootstrap'
 
 interface StudyListProps {
   studyList: Study[] | undefined
-  onSetStudy: Function
 }
 
-export const StudyList: React.FC<StudyListProps> = ({ studyList, onSetStudy }) => {
+export const StudyList: React.FC<StudyListProps> = ({ studyList }) => {
   return (
     <Container>
       <Row className='g-5'>
         {studyList && studyList.map((study: Study, index: number) => 
           <Col key={index} xs={6} lg={3}>
-            <StudyCard study={study} onSetStudy={onSetStudy} />
+            <StudyCard study={study} />
           </Col>
         )}
         {!studyList && <p>Empty List</p>}
