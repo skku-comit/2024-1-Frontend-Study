@@ -10,7 +10,7 @@ interface Study {
 
 const storedStudy = window.localStorage.getItem("study");
 if (!storedStudy) {
-  window.location.href = "/";
+  window.location.href = "../";
 } else {
   const study: Study = JSON.parse(storedStudy);
   console.log(study);
