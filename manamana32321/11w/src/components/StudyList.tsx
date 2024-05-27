@@ -23,11 +23,11 @@ export const StudyList: React.FC<StudyListProps> = ({ studyList }) => {
       <Row className='g-5'>
         {studyData ? studyData.map((study: Study, index: number) => 
           <Col key={index} xs={6} lg={3}>
-            <StudyCard study={study} />
+            <StudyCard id={index} study={study} />
           </Col>
         )
         :
-        !studyData && <p>Empty List</p>}
+        <p>Empty List</p>}
       </Row>
     </Container>
   )

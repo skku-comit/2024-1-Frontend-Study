@@ -40,8 +40,8 @@ function App() {
               
             </Route>
             
-            <Route path="/study/:studyTitle">
-              <StudyDetail studyList={studyList} />
+            <Route path="/study/:studyId">
+              <StudyDetail/>
             </Route>
 
             <Route>

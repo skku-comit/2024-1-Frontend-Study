@@ -7,17 +7,19 @@ import { TiSpanner } from "react-icons/ti";
 
 import { Study } from "../data"
 
-interface StudyDetailProps {
-  studyList: Study[]
-}
-
-const StudyDetail: React.FC<StudyDetailProps> = ({ studyList }) => {
+const StudyDetail = () => {
   const [study, setStudy] = useState<Study>()
-  const params = useParams<{studyTitle: string}>()
+  const { studyId } = useParams<{studyId: string}>()
 
   useEffect(() => {
-    setStudy(studyList.find((study) => study.title === params.studyTitle))
-  }, [studyList, params])
+    fetch(`https://getstudy-he4kudccka-uc.a.run.app/${studyId}/`).then(
+      res => {
+        return res.json()
+      }).then(
+        data => {
+          setStudy(data)
+        })
+  }, [studyId])
 
 
   return <div className="text-center">
@@ -38,7 +40,7 @@ const StudyDetail: React.FC<StudyDetailProps> = ({ studyList }) => {
       </p>
     </>
     :
-    <p>Invalid study</p>}
+    <p>Loading...</p>}
   </div>
 }
 

@@ -5,14 +5,15 @@ import { Link } from "react-router-dom"
 import Badge from "./Badge"
 
 interface StudyCardProps {
+  id: number
   study: Study
 }
 
-const StudyCard: React.FC<StudyCardProps> = ({ study }) => {
+const StudyCard: React.FC<StudyCardProps> = ({ id, study }) => {
   const { imageSrc, title, level, stack, campus } = study
 
   return (
-    <Link to={`/study/${study.title}`}>
+    <Link to={`/study/${id}`}>
       <Card className='text-center p-3'>
         <CardBody>
           <img alt={title} src={imageSrc} className='mb-3' width='160' />
