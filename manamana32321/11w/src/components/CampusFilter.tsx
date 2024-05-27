@@ -9,13 +9,16 @@ interface FilterBadgeInterface {
   setSelectedFilter: Function
   text: string
   studyData: Study[] | undefined
-  setStudyData: Function
+  setStudyList: Function
 }
 
-const FilterBadge: React.FC<FilterBadgeInterface> = ({ isToggled, setSelectedFilter, text, studyData, setStudyData }) => {
+const FilterBadge: React.FC<FilterBadgeInterface> = ({ isToggled, setSelectedFilter, text, studyData, setStudyList }) => {
   function filterStudyData() {
-    const filteredStudyData = text === ALL_FILTER_TEXT ? studyData : studyData?.filter((study)=> study.campus === text) || []
-    setStudyData(filteredStudyData)
+    if(text === ALL_FILTER_TEXT) {
+      setStudyList(studyData)
+    } else {
+      setStudyList(studyData?.filter((study)=> study.campus === text))
+    }
     setSelectedFilter(text)
   }
 
@@ -26,10 +29,10 @@ const FilterBadge: React.FC<FilterBadgeInterface> = ({ isToggled, setSelectedFil
 
 interface CampusFilterInterface {
   studyData: Study[] | undefined
-  setStudyData: Function
+  setStudyList: Function
 }
 
-export const CampusFilter: React.FC<CampusFilterInterface> = ({ studyData, setStudyData }) => {
+export const CampusFilter: React.FC<CampusFilterInterface> = ({ studyData, setStudyList }) => {
   const filterList = [ALL_FILTER_TEXT, '율전', '명륜', '공통', '온라인'];
   const [selectedFilter, setSelectedFilter] = useState(ALL_FILTER_TEXT)
   
@@ -40,6 +43,6 @@ export const CampusFilter: React.FC<CampusFilterInterface> = ({ studyData, setSt
       setSelectedFilter={setSelectedFilter}
       text={filterText}
       studyData={studyData}
-      setStudyData={setStudyData}/>)}
+      setStudyList={setStudyList}/>)}
   </Container>
 }
