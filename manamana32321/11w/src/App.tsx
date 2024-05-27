@@ -20,7 +20,6 @@ function App() {
           setStudyList(data)
         })
   }, [])
-  
 
   return (
     <BrowserRouter>
@@ -34,7 +33,11 @@ function App() {
         <main id="content">
           <Switch>
             <Route exact path="/">
+              {studyList.length > 0 ?
               <StudyList studyList={studyList}/>
+              :
+              <p>Loading...</p>}
+              
             </Route>
             
             <Route path="/study/:studyTitle">
