@@ -30,7 +30,7 @@ interface CampusFilterInterface {
 }
 
 export const CampusFilter: React.FC<CampusFilterInterface> = ({ studyData, setStudyData }) => {
-  const filterList = [ALL_FILTER_TEXT, '율전', '인사', '공통', '온라인'];
+  const filterList = [ALL_FILTER_TEXT, '율전', '명륜', '공통', '온라인'];
   const [selectedFilter, setSelectedFilter] = useState(ALL_FILTER_TEXT)
   
   return <Container className='mb-3 d-flex justify-content-center'>

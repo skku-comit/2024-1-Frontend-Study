@@ -21,7 +21,7 @@ const StudyDetail: React.FC<StudyDetailProps> = ({ studyList }) => {
 
 
   return <div className="text-center">
-    {study && <>
+    {study ? <>
       <img alt={study.title} src={study.imageSrc} width="300px" height="300px" />
 
       <h1 className='fw-bold mb-4'>{study.title}</h1>
@@ -36,8 +36,9 @@ const StudyDetail: React.FC<StudyDetailProps> = ({ studyList }) => {
       <p id='description' className="text-start">
         {study.description}
       </p>
-    </>}
-    {!study && <p>Invalid study</p>}
+    </>
+    :
+    <p>Invalid study</p>}
   </div>
 }
 

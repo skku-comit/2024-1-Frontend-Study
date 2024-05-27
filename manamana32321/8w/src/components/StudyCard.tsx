@@ -1,6 +1,5 @@
 import React from "react"
 import { Study } from "../data"
-import { BadgeWrapper } from "./Badge"
 import { Card, CardBody } from "react-bootstrap"
 import { Link } from "react-router-dom"
 
@@ -19,7 +18,9 @@ const StudyCard: React.FC<StudyCardProps> = ({ study }) => {
           <h5 className='fw-bold mb-3'>{title}</h5>
 
           <div className='mb-3'>
-            <BadgeWrapper texts={[level, stack[0], campus]} />
+            {[level, stack[0], campus].map((text) => {
+              return <Badge key={text} text={text} />
+            })}
           </div>
         </CardBody>
       </Card>
