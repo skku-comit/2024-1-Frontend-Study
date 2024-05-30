@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import { Container, Button } from "react-bootstrap";
-import { Study } from '../data'
+import { Study } from '../data.ts'
 
 const ALL_FILTER_TEXT = '전체'
 
 interface FilterBadgeInterface {
   isToggled: boolean
-  setSelectedFilter: Function
+  setSelectedFilter: React.Dispatch<React.SetStateAction<string>>
   text: string
   studyData: Study[] | undefined
-  setStudyList: Function
+  setStudyList: React.Dispatch<React.SetStateAction<Study[]>>
 }
 
 const FilterBadge: React.FC<FilterBadgeInterface> = ({ isToggled, setSelectedFilter, text, studyData, setStudyList }) => {
   function filterStudyData() {
     if(text === ALL_FILTER_TEXT) {
-      setStudyList(studyData)
+      setStudyList(studyData || [])
     } else {
-      setStudyList(studyData?.filter((study)=> study.campus === text))
+      setStudyList(studyData?.filter((study)=> study.campus === text) || [])
     }
     setSelectedFilter(text)
   }
@@ -29,7 +29,7 @@ const FilterBadge: React.FC<FilterBadgeInterface> = ({ isToggled, setSelectedFil
 
 interface CampusFilterInterface {
   studyData: Study[] | undefined
-  setStudyList: Function
+  setStudyList: React.Dispatch<React.SetStateAction<Study[]>>
 }
 
 export const CampusFilter: React.FC<CampusFilterInterface> = ({ studyData, setStudyList }) => {

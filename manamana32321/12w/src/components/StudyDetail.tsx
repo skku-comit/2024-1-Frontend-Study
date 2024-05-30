@@ -5,7 +5,7 @@ import { LuSchool } from "react-icons/lu";
 import { IoPerson } from "react-icons/io5";
 import { TiSpanner } from "react-icons/ti";
 
-import { Study } from "../data"
+import { Study } from "../data.ts"
 
 const StudyDetail = () => {
   const [study, setStudy] = useState<Study>()

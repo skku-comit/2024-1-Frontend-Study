@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { Study } from '../data'
+import { Study } from '../data.ts'
 import StudyCard, { StudyLoadingCard } from './StudyCard'
 import { Container, Row, Col } from 'react-bootstrap'
 import { CampusFilter } from './CampusFilter'

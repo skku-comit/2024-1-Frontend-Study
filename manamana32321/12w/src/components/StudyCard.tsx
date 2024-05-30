@@ -1,5 +1,5 @@
 import React from "react"
-import { Study } from "../data"
+import { Study } from "../data.ts"
 import { Card, CardBody, CardTitle, CardText } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import Badge from "./Badge"
