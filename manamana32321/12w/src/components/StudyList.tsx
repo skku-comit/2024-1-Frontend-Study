@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { Study } from '../data.ts'
 import StudyCard, { StudyLoadingCard } from './StudyCard'
-import { Container, Row, Col } from 'react-bootstrap'
 import { CampusFilter } from './CampusFilter'
 
 export const StudyList = () => {
@@ -35,23 +34,23 @@ export const StudyList = () => {
   [studyData])
 
   return (
-    <Container>
+    <div>
       <CampusFilter studyData={studyData} setStudyList={setStudyList} />
       
-      <Row className='g-5'>
+      <div className='g-5'>
         {error ? <p>{error}</p> :
         isPending ? Array.from({ length: SKELETON_COUNT }).map((_, index) => (
-          <Col key={index} xs={6} lg={3}>
+          <div key={index}>
             <StudyLoadingCard />
-          </Col>
+          </div>
         )) :
         studyList ? studyList.map((study: Study, index: number) => 
-          <Col key={index} xs={6} lg={3}>
+          <div key={index}>
             <StudyCard id={index} study={study} />
-          </Col>
+          </div>
         ) : <p>Empty List</p>}
-      </Row>
-    </Container>
+      </div>
+    </div>
   )
 }
 

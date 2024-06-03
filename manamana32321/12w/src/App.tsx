@@ -1,8 +1,6 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 import StudyList from './components/StudyList';
 import StudyDetail from './components/StudyDetail';
 

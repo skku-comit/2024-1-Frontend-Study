@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Container, Button } from "react-bootstrap";
 import { Study } from '../data.ts'
+import { Button } from "@/components/ui/button"
 
 const ALL_FILTER_TEXT = '전체'
 
@@ -22,7 +22,7 @@ const FilterBadge: React.FC<FilterBadgeInterface> = ({ isToggled, setSelectedFil
     setSelectedFilter(text)
   }
 
-  return <Button onClick={filterStudyData} variant={isToggled ? 'outline-primary' : ''}>
+  return <Button onClick={filterStudyData} variant={isToggled ? 'outline' : 'default'}>
     {text}
   </Button>
 }
@@ -36,7 +36,7 @@ export const CampusFilter: React.FC<CampusFilterInterface> = ({ studyData, setSt
   const filterList = [ALL_FILTER_TEXT, '율전', '명륜', '공통', '온라인'];
   const [selectedFilter, setSelectedFilter] = useState(ALL_FILTER_TEXT)
   
-  return <Container className='mb-3 d-flex justify-content-center'>
+  return <div className='mb-3 d-flex justify-content-center'>
     {filterList.map((filterText) => <FilterBadge
       key={filterText}
       isToggled={selectedFilter===filterText}
@@ -44,5 +44,5 @@ export const CampusFilter: React.FC<CampusFilterInterface> = ({ studyData, setSt
       text={filterText}
       studyData={studyData}
       setStudyList={setStudyList}/>)}
-  </Container>
+  </div>
 }
