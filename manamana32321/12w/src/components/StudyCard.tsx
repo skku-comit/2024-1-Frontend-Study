@@ -2,6 +2,12 @@ import React from "react"
 import { Study } from "../data.ts"
 import { Link } from "react-router-dom"
 import { Badge } from "@/components/ui/badge"
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 
 interface StudyCardProps {
   id: number
@@ -13,38 +19,38 @@ const StudyCard: React.FC<StudyCardProps> = ({ id, study }) => {
 
   return (
     <Link to={`/study/${id}`}>
-      <div className='text-center p-3'>
-        <img alt={title} src={imageSrc} className='mb-3' width='160' />
-        <h3 className='fw-bold mb-3'>{title}</h3>
+      <Card className='rounded-xl p-3 text-center hoverable-card'>
+        <CardHeader>
+          <img alt={title} src={imageSrc} className='mb-3 mx-auto' width='160' />
+          <CardTitle className='mb-3'>{title}</CardTitle>
+        </CardHeader>
 
-        <div className='mb-3'>
+        <CardContent className='flex gap-x-3 justify-center'>
           {[level, stack[0], campus].map((text, index) =>
             <Badge key={index} variant="outline">
               {text}
             </Badge>
           )}
-        </div>
-      </div>
+        </CardContent>
+      </Card>
     </Link>
   )
 }
 
 export const StudyLoadingCard = () => {
   return(
-    <div className='text-center p-3'>
-      <img alt='...' src='...' className='card-img-top mb-3' width='160' />
-      <h3 className='fw-bold mb-3 placeholder-glow'>
-        <span className="placeholder col-12"></span>
-      </h3>
+    <Card className='rounded-xl p-3 text-center animate-pulse'>
+      <CardHeader>
+        <img className="mb-3 bg-slate-700 rounded-xl" style={{ height: 160 }}></img>
+        <CardTitle className="mb-3 h-10 bg-slate-700 rounded"></CardTitle>
+      </CardHeader>
 
-      <div className="card-text placeholder-glow">
-        <span className="placeholder col-4"></span>
-        <span className="placeholder col-2"></span>
-        <span className="placeholder col-2"></span>
-        <span className="placeholder col-3"></span>
-        <span className="placeholder col-3"></span>
-      </div>
-    </div>
+      <CardContent className='flex gap-x-3 justify-center'>
+        <div className="h-5 bg-slate-700 rounded-full px-5">...</div>
+        <div className="h-5 bg-slate-700 rounded-full px-5">...</div>
+        <div className="h-5 bg-slate-700 rounded-full px-5">...</div>
+      </CardContent>
+    </Card>
   )
 }
 

@@ -22,21 +22,25 @@ const FilterBadge: React.FC<FilterBadgeInterface> = ({ isToggled, setSelectedFil
     setSelectedFilter(text)
   }
 
-  return <Button onClick={filterStudyData} variant={isToggled ? 'outline' : 'default'}>
+  return <Button
+    onClick={filterStudyData}
+    variant={isToggled ? 'outline' : 'default'}
+    className="rounded">
     {text}
   </Button>
 }
 
 interface CampusFilterInterface {
+  className: string
   studyData: Study[] | undefined
   setStudyList: React.Dispatch<React.SetStateAction<Study[]>>
 }
 
-export const CampusFilter: React.FC<CampusFilterInterface> = ({ studyData, setStudyList }) => {
+export const CampusFilter: React.FC<CampusFilterInterface> = ({ className, studyData, setStudyList }) => {
   const filterList = [ALL_FILTER_TEXT, '율전', '명륜', '공통', '온라인'];
   const [selectedFilter, setSelectedFilter] = useState(ALL_FILTER_TEXT)
   
-  return <div className='mb-3 d-flex justify-content-center'>
+  return <div className={className + ' flex justify-center gap-x-3'}>
     {filterList.map((filterText) => <FilterBadge
       key={filterText}
       isToggled={selectedFilter===filterText}

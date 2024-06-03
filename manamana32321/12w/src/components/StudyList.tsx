@@ -34,20 +34,16 @@ export const StudyList = () => {
   [studyData])
 
   return (
-    <div>
-      <CampusFilter studyData={studyData} setStudyList={setStudyList} />
+    <div className='container'>
+      <CampusFilter className='mb-5' studyData={studyData} setStudyList={setStudyList}/>
       
-      <div className='g-5'>
+      <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10'>
         {error ? <p>{error}</p> :
         isPending ? Array.from({ length: SKELETON_COUNT }).map((_, index) => (
-          <div key={index}>
-            <StudyLoadingCard />
-          </div>
+          <StudyLoadingCard key={index} />
         )) :
         studyList ? studyList.map((study: Study, index: number) => 
-          <div key={index}>
-            <StudyCard id={index} study={study} />
-          </div>
+          <StudyCard key={index} id={index} study={study} />
         ) : <p>Empty List</p>}
       </div>
     </div>

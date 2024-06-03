@@ -7,10 +7,10 @@ import StudyDetail from './components/StudyDetail';
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
-        <header className="App-header">
+      <div>
+        <header>
           <a href='/' className="text-center p-3 pt-4 fw-bold">
-            <h2>CoMit Study</h2>
+            <h2 className='text-4xl font-extrabold'>CoMit Study</h2>
           </a>
         </header>
 
