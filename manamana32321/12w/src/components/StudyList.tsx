@@ -37,7 +37,7 @@ export const StudyList = () => {
     <div className='container'>
       <CampusFilter className='mb-5' studyData={studyData} setStudyList={setStudyList}/>
       
-      <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10'>
+      <div className='grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10'>
         {error ? <p>{error}</p> :
         isPending ? Array.from({ length: SKELETON_COUNT }).map((_, index) => (
           <StudyLoadingCard key={index} />
